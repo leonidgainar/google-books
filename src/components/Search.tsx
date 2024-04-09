@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Input, Row, Col } from 'antd';
 import { AppDispatch } from '../app/store';
@@ -9,6 +9,13 @@ const BookSearch: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   let timer: ReturnType<typeof setTimeout>;
 
+  useEffect(() => {
+    const savedSearchText = localStorage.getItem('searchText');
+    if (savedSearchText) {
+      setSearchText(savedSearchText);
+    }
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
     setSearchText(inputText.trim());
@@ -17,6 +24,8 @@ const BookSearch: React.FC = () => {
 
     timer = setTimeout(() => {
       dispatch(fetchBooks(inputText.trim()));
+      // Save the search term to local storage
+      localStorage.setItem('searchText', inputText.trim());
     }, 500);
   };
 
