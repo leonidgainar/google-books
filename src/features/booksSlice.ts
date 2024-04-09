@@ -43,7 +43,7 @@ export const fetchBooks = (searchText: string): AppThunk => async (dispatch) => 
   try {
     dispatch(getBooksStart());
     const response = await axios.get(`${API_URL}?q=${searchText}`);
-    dispatch(getBooksSuccess(response.data.items));
+    dispatch(getBooksSuccess(response.data));
   } catch (error) {
     console.error(error);
     dispatch(getBooksFailure());

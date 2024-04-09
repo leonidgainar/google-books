@@ -24,12 +24,12 @@ const FavoriteBookList: React.FC = () => {
                   hoverable
                   style={{ height: '100%' }}
                   cover={<img style={{ width: '200px', height: '300px', margin: 'auto' }}
-                    alt={book.volumeInfo.title}
-                    src={book.volumeInfo.imageLinks?.thumbnail}
+                    alt={book.title}
+                    src={book?.thumbnail}
                   />}
                 >
-                  <Meta title={book.volumeInfo.title} description={book.volumeInfo.subtitle} />
-                  {book?.searchInfo && <p dangerouslySetInnerHTML={{ __html: book.searchInfo?.textSnippet }} />}
+                  <Meta title={book.title} description={book.subtitle} />
+                  {book?.searchInfo && <p dangerouslySetInnerHTML={{ __html: book.searchInfo }} />}
                 </Card>
               </Link>
             </Col>

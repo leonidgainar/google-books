@@ -62,8 +62,8 @@ const BookDetail: React.FC = () => {
             <Card
               hoverable
               cover={<img style={{ width: '200px', height: "300px", margin: 'auto' }}
-                alt={book.volumeInfo.title}
-                src={book.volumeInfo.imageLinks?.thumbnail}
+                alt={book.title}
+                src={book?.thumbnail}
               />}
               actions={[
                 isFavorite ?
@@ -71,8 +71,8 @@ const BookDetail: React.FC = () => {
                   <StarOutlined key="favorite" title='Add to favorites' onClick={handleToggleFavorite} />
               ]}
             >
-              <Meta title={book.volumeInfo.title} description={book.volumeInfo.subtitle} />
-              {book?.searchInfo && <p dangerouslySetInnerHTML={{ __html: book.searchInfo?.textSnippet }} />}
+              <Meta title={book.title} description={book.subtitle} />
+              {book?.searchInfo && <p dangerouslySetInnerHTML={{ __html: book.searchInfo }} />}
             </Card>
           </Col>
         </Row>
