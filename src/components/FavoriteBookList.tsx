@@ -17,6 +17,11 @@ const FavoriteBookList: React.FC = () => {
         <Loading />
       ) : (
         <Row justify="center" gutter={[16, 16]}>
+          {favoriteBooks.length === 0 && (
+            <Col span={24}>
+              <h2>No favorite books</h2>
+            </Col>
+          )}
           {favoriteBooks.map((book) => (
             <Col key={book.id} xs={24} sm={12} md={8} lg={6} xl={6}>
               <Link to={`/books/${book.id}`}>
