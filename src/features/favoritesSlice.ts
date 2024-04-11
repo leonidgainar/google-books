@@ -3,9 +3,8 @@ import axios from 'axios';
 import { AppThunk } from '../app/store';
 import { Book } from '../types/book';
 
-const API_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL || 'http://localhost';
-const API_PORT = process.env.REACT_APP_SERVER_PORT || '3001';
-const API_URL = `${API_BASE_URL}:${API_PORT}/api/favorites`;
+const API_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL || 'http://localhost:3001';
+const API_URL = `${API_BASE_URL}/api/favorites`;
 
 interface FavoritesState {
   favorites: Book[];
