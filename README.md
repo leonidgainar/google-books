@@ -1,6 +1,6 @@
 # Getting started google-books
 
-Live demo: https://react-app-goole-books.netlify.app/
+Live demo: https://react-app-google-books.netlify.app/
 
 ## Server repository
 https://github.com/leonidgainar/google-books-api
