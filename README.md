@@ -1,6 +1,6 @@
 # Getting started google-books
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live demo: https://react-app-goole-books.netlify.app/
 
 ## Server repository
 https://github.com/leonidgainar/google-books-api
