@@ -8,11 +8,13 @@ const API_URL = `${API_BASE_URL}/api/books`;
 
 interface BooksState {
   books: Book[];
+  searchText: string;
   loading: boolean;
 }
 
 const initialState: BooksState = {
   books: [],
+  searchText: '',
   loading: false,
 };
 
@@ -31,10 +33,13 @@ const booksSlice = createSlice({
       state.loading = false;
       state.books = [];
     },
+    setSearchText(state, action: PayloadAction<string>) {
+      state.searchText = action.payload;
+    }
   },
 });
 
-export const { getBooksStart, getBooksSuccess, getBooksFailure } = booksSlice.actions;
+export const { getBooksStart, getBooksSuccess, getBooksFailure, setSearchText } = booksSlice.actions;
 
 export default booksSlice.reducer;
 

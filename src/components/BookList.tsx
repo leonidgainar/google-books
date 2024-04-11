@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col } from 'antd';
 import { RootState } from '../app/store';
-import BookSearch from './Search';
+import BookSearch from './BookSearch';
 import Loading from './Loading';
 
 const { Meta } = Card;
