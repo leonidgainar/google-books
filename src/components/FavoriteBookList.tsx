@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Card, Row, Col } from 'antd';
-import { RootState } from '../app/store';
+import { AppDispatch, RootState } from '../app/store';
+import { getFavoriteBooks } from '../features/favoritesSlice';
 import Loading from './Loading';
 
 const { Meta } = Card;
 
 const FavoriteBookList: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+
   const favoriteBooks = useSelector((state: RootState) => state.favorites.favorites);
-  const loading = useSelector((state: RootState) => state.books.loading);
+  const loading = useSelector((state: RootState) => state.favorites.loading);
+  
+  useEffect(() => {
+    if (favoriteBooks.length === 0) {
+      dispatch(getFavoriteBooks());
+    }
+  }, [dispatch, favoriteBooks.length]);
 
   return (
     <>

@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Row, Col } from 'antd';
 import { StarOutlined, StarFilled } from '@ant-design/icons';
-import Loading from './Loading';
 import { AppDispatch, RootState } from '../app/store';
 import { Book } from '../types/book';
-import { addFavorite, removeFavorite } from '../features/favoritesSlice';
+import { addFavoriteBook, deleteFavoriteBook } from '../features/favoritesSlice';
+import Loading from './Loading';
 
 const { Meta } = Card;
 
@@ -47,9 +47,9 @@ const BookDetail: React.FC = () => {
       return;
     }
     if (isFavorite) {
-      dispatch(removeFavorite(book.id));
+      dispatch(deleteFavoriteBook(book.id));
     } else {
-      dispatch(addFavorite(book));
+      dispatch(addFavoriteBook(book));
     }
     setFavorite(!isFavorite);
   };

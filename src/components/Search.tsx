@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input, Row, Col } from 'antd';
-import { AppDispatch } from '../app/store';
-import { fetchBooks } from '../features/booksSlice';
+import { AppDispatch, RootState } from '../app/store';
+import  { fetchBooks } from '../features/booksSlice';
 
 const BookSearch: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const dispatch: AppDispatch = useDispatch();
+  const books = useSelector((state: RootState) => state.books.books);
+  
+  const savedSearchText = localStorage.getItem('searchText');
   let timer: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
-    const savedSearchText = localStorage.getItem('searchText');
     if (savedSearchText) {
       setSearchText(savedSearchText);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (books.length === 0 && savedSearchText) {
+      dispatch(fetchBooks(savedSearchText));
     }
   }, []);
 

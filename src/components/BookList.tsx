@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col } from 'antd';
-import Loading from './Loading';
 import { RootState } from '../app/store';
 import BookSearch from './Search';
+import Loading from './Loading';
 
 const { Meta } = Card;
 
