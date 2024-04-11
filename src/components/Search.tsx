@@ -16,13 +16,13 @@ const BookSearch: React.FC = () => {
     if (savedSearchText) {
       setSearchText(savedSearchText);
     }
-  }, []);
+  }, [savedSearchText]);
 
   useEffect(() => {
     if (books.length === 0 && savedSearchText) {
       dispatch(fetchBooks(savedSearchText));
     }
-  }, []);
+  }, [dispatch, books.length, savedSearchText]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
